@@ -1,0 +1,13 @@
+---
+- name: remove inventory nodes from an existing F5 Big IP Pool and Save the running config to disk
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Loop over hosts to remove them from pool
+    include_role:
+      name: rsoliman.f5_demos.bigip-remove-pool-member
+    vars:
+      node_name_choice: "{{hostvars[item].inventory_hostname}}"
+      node_fqdn_choice: "{{hostvars[item].ansible_host}}"
+    loop: "{{ groups['all'] }}"
+    run_once: true

@@ -1,0 +1,6 @@
+---
+- name: Remove a node from an existing F5 Big IP Pool and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-remove-pool-member

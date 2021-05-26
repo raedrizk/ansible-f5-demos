@@ -1,0 +1,15 @@
+---
+# tasks file for bigip-add-pool
+- name: Create a new Big IP pool with the name {{ pool_name }}
+  f5networks.f5_modules.bigip_pool:
+    state: present
+    name: "{{ pool_name }}"
+    partition: "{{ pool_partition }}"
+    lb_method: "{{ pool_lb_method }}"
+    slow_ramp_time: "{{ pool_slow_ramp_time }}"
+    monitors: "{{ pool_mons }}"
+    metadata:
+      updated_by: Ansible
+    provider: "{{ bigip_provider }}"
+  delegate_to: localhost
+  notify: Save the running configuration of BIG-IP to disk

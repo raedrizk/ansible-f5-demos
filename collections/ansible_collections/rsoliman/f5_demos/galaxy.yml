@@ -1,0 +1,21 @@
+namespace: rsoliman
+name: f5_demos
+version: 1.0.0
+readme: README.md
+authors:
+- Raed Soliman <raedrizk@gmail.com>
+
+description: A collection of roles used to demo F5 BigIP automation using Ansible.
+
+license:
+- "MIT"
+
+tags: ['f5','demo','ansible','raedrizk','rsoliman']
+
+dependencies:
+    "f5networks.f5_modules": "*"
+    "ansible.builtin": "*"
+
+repository: http://example.com/repository
+homepage: http://example.com
+issues: http://example.com/issue/tracker

@@ -1,0 +1,6 @@
+---
+- name: Add a node to an existing F5 Big IP Pool as a member and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-add-pool-member

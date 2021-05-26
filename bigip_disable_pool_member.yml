@@ -1,0 +1,6 @@
+---
+- name: Disable an existing F5 Big IP Pool member and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-disable-pool-member

@@ -1,0 +1,13 @@
+---
+# tasks file for bigip-disable-pool-member
+  - name: Disable a pool member
+    f5networks.f5_modules.f5networks.f5_modules.bigip_pool_member:
+      state: disabled
+      pool: "{{ pool_name }}"
+      name: "{{ node_name }}"
+      address: "{{ node_fqdn }}"
+      partition: "{{ pool_partition }}"
+      port: "{{ pool_member_port }}"
+      provider: "{{ bigip_provider }}"
+    delegate_to: localhost
+    notify: Save the running configuration of BIG-IP to disk

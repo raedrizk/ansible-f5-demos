@@ -1,0 +1,6 @@
+---
+- name: Remove pool from F5 Big IP and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-remove-pool

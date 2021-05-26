@@ -1,0 +1,10 @@
+---
+# tasks file for bigip-add-irule
+- name: Remove iRule contained 
+  f5networks.f5_modules.bigip_irule:
+    state: absent
+    name: "{{ irule_name }}"
+    module: "{{ irule_module }}"
+    provider: "{{ bigip_provider }}"
+  delegate_to: localhost
+  notify: Save the running configuration of BIG-IP to disk

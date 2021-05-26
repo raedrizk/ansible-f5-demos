@@ -1,0 +1,6 @@
+---
+- name: Remove irule from F5 Big IP
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-remove-irule

@@ -1,0 +1,18 @@
+---
+# tasks file for bigip-add-virtual-server
+- name: Add virtual server
+  f5networks.f5_modules.bigip_virtual_server:
+    state: present
+    name: "{{ virtual_server_name }}"
+    description: "{{ virtual_server_desc }}"
+    pool: "{{ pool_name }}"
+    partition: "{{ virtual_server_partition }}"    
+    port: "{{ virtual_server_port }}"
+    destination: "{{ virtual_server_destination }}"
+    snat: "{{ virtual_server_snat }}"
+    irules: "{{ virtual_server_irules }}"
+    profiles:
+      - http
+    provider: "{{ bigip_provider }}"
+  delegate_to: localhost
+  notify: Save the running configuration of BIG-IP to disk

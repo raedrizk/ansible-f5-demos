@@ -1,0 +1,20 @@
+---
+# vars file for bigip-add-virtual-server
+bigip_provider:
+      server: "{{ bigip_provider_server | default('bigip.demo.ansible') }}"
+      validate_certs: "{{ bigip_provider_validate_certs | default('no') }}"
+      user: "{{ bigip_provider_user | default('admin') }}"
+      password: "{{ bigip_provider_password | default('') }}"
+      server_port: "{{ bigip_provider_server_port | default(443) }}"
+
+virtual_server_name: "{{ virtual_server_name_choice | default('Ansible_Demo_Virtual_Server') }}"
+virtual_server_desc: "{{ virtual_server_desc_choice | default('Virtual Server Create by Ansible') }}"
+virtual_server_port: "{{ virtual_server_port_choice | default('http') }}" 
+virtual_server_partition: "{{ virtual_server_partition_choice | default('Common') }}"
+virtual_server_destination: "{{ virtual_server_destination_choice | default('10.10.10.10') }}"
+virtual_server_snat: "{{ virtual_server_snat_choice | default('Automap') }}"
+virtual_server_irules: "{{ virtual_server_irules_choice | default(['AnsibleIRule']) }}"
+
+pool_name: "{{ pool_name_choice | default('Ansible_Demo_Pool') }}"
+pool_partition: "{{ pool_partition_choice | default('Common') }}"
+

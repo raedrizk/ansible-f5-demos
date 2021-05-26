@@ -1,0 +1,12 @@
+---
+# vars file for bigip-add-irule
+bigip_provider:
+      server: "{{ bigip_provider_server | default('bigip.demo.ansible') }}"
+      validate_certs: "{{ bigip_provider_validate_certs | default('no') }}"
+      user: "{{ bigip_provider_user | default('admin') }}"
+      password: "{{ bigip_provider_password | default('') }}"
+      server_port: "{{ bigip_provider_server_port | default(443) }}"
+
+irule_name: "{{ irule_name_choice | default('AnsibleIRule') }}"
+irule_module: "{{ irule_module_choice | default('ltm') }}"
+irule_content_template: "{{ irule_content_template_choice | default('sample1.tcl') }}"

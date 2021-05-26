@@ -1,0 +1,11 @@
+---
+# tasks file for bigip-add-irule
+- name: Add the iRule contained in template {{ irule_content_template }} to the {{ irule_module }} module
+  f5networks.f5_modules.bigip_irule:
+    state: present
+    name: "{{ irule_name }}"
+    module: "{{ irule_module }}"
+    content: "{{ lookup('template', irule_content_template) }}"
+    provider: "{{ bigip_provider }}"
+  delegate_to: localhost
+  notify: Save the running configuration of BIG-IP to disk

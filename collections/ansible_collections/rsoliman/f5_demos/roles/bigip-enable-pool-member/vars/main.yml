@@ -1,0 +1,16 @@
+---
+# vars file for bigip-enable-pool-member
+bigip_provider:
+      server: "{{ bigip_provider_server | default('bigip.demo.ansible') }}"
+      validate_certs: "{{ bigip_provider_validate_certs | default('no') }}"
+      user: "{{ bigip_provider_user | default('admin') }}"
+      password: "{{ bigip_provider_password | default('') }}"
+      server_port: "{{ bigip_provider_server_port | default(443) }}"
+
+node_name: "{{ node_name_choice | default('Ansible_Demo_Node') }}"
+node_fqdn: "{{ node_fqdn_choice | default('ansible.node.demo') }}"
+
+pool_name: "{{ pool_name_choice | default('Ansible_Demo_Pool') }}"
+pool_partition: "{{ pool_partition_choice | default('Common') }}"
+
+pool_member_port: "{{ pool_member_port_choice | default(80) }}" 

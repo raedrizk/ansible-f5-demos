@@ -1,0 +1,6 @@
+---
+- name: Add a a new pool to F5 Big IP and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-add-pool

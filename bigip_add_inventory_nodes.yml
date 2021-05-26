@@ -1,0 +1,13 @@
+---
+- name: Add all ansible inventory nodes to an F5 Big IP and Save the running config to disk
+  hosts: all
+  gather_facts: false
+  tasks:
+   - name: Loop over hosts to add them as nodes
+    include_role:
+      name: rsoliman.f5_demos.bigip-add-node
+    vars:
+      node_name_choice: "{{hostvars[item].inventory_hostname}}"
+      node_fqdn_choice: "{{hostvars[item].ansible_host}}"
+    loop: "{{ groups['all'] }}"
+    run_once: true

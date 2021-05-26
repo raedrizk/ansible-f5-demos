@@ -1,0 +1,8 @@
+---
+# tasks file for bigip-save-config
+- name: Save the running configuration of BIG-IP to disk
+  f5networks.f5_modules.bigip_config:
+    save: yes
+    provider: "{{ bigip_provider }}"
+  delegate_to: localhost
+  register: save_running_config_out

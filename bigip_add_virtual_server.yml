@@ -1,0 +1,6 @@
+---
+- name: Create a new virtual Server in F5 Big IP Pool and Save the running config to disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-add-virtual-server

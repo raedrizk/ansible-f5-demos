@@ -1,0 +1,6 @@
+---
+- name: Add a new irule from a template to F5 Big IP
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-add-irule

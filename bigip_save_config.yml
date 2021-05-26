@@ -1,0 +1,6 @@
+---
+- name: Save the F5 Big IP running Config to Disk
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - rsoliman.f5_demos.bigip-save-config

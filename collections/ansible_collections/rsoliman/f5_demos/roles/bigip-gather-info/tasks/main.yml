@@ -1,0 +1,20 @@
+---
+# tasks file for bigip-gather-info
+- name: COLLECT BIG-IP FACTS
+  f5networks.f5_modules.bigip_device_info:
+    gather_subset:
+      - system-info
+    provider: "{{ bigip_provider }}"
+  register: device_facts
+
+- name: Show all system info
+  ansible.builtin.debug:
+    var: device_facts
+
+- name: show MAC address
+  ansible.builtin.debug:
+    var: device_facts['system_info']['base_mac_address']
+
+- name: show version
+  ansible.builtin.debug:
+    var: device_facts['system_info']['product_version']

@@ -1,0 +1,14 @@
+---
+# vars file for bigip-add-pool
+bigip_provider:
+      server: "{{ bigip_provider_server | default('bigip.demo.ansible') }}"
+      validate_certs: "{{ bigip_provider_validate_certs | default('no') }}"
+      user: "{{ bigip_provider_user | default('admin') }}"
+      password: "{{ bigip_provider_password | default('') }}"
+      server_port: "{{ bigip_provider_server_port | default(443) }}"
+
+pool_name: "{{ pool_name_choice | default('Ansible_Demo_Pool') }}"
+pool_partition: "{{ pool_partition_choice | default('Common') }}"
+pool_lb_method: "{{ pool_lb_method_choice | default('round-robin') }}" 
+pool_slow_ramp_time: "{{ pool_slow_ramp_time_choice | default(360) }}" 
+pool_mons: "{{ pool_mons_choice | default(['http']) }}" 
