@@ -13,7 +13,7 @@ virtual_server_port: "{{ virtual_server_port_choice | default('http') }}"
 virtual_server_partition: "{{ virtual_server_partition_choice | default('Common') }}"
 virtual_server_destination: "{{ virtual_server_destination_choice | default('10.10.10.10') }}"
 virtual_server_snat: "{{ virtual_server_snat_choice | default('Automap') }}"
-virtual_server_irules_choice: "{{ irule_name_choice if (irule_name_choice is defined and irule_name_choice != '') else 'AnsibleIRule'}}"
+virtual_server_irules_choice: "{{ irule_name_choice if (irule_name_choice is defined and irule_name_choice != '') else 'AnsibleIRule2'}}"
 virtual_server_irules: "{{ virtual_server_irules_choice | default(['AnsibleIRule']) }}"
 
 
