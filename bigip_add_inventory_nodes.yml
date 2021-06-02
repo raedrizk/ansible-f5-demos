@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-   - name: Loop over hosts to add them as nodes
+  - name: Loop over hosts to add them as nodes
     include_role:
       name: rsoliman.f5_demos.bigip_add_node
     vars:
