@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-  - rsoliman.f5_demos.bigip-add-irule
+  - rsoliman.f5_demos.bigip_add_irule

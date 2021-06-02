@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-  - rsoliman.f5_demos.bigip-remove-node
+  - rsoliman.f5_demos.bigip_remove_node

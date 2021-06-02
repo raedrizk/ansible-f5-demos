@@ -5,7 +5,7 @@
   tasks:
   - name: Loop over hosts to remove them from nodes
     include_role:
-      name: rsoliman.f5_demos.bigip-remove-node
+      name: rsoliman.f5_demos.bigip_remove_node
     vars:
       node_name_choice: "{{hostvars[item].inventory_hostname}}"
       node_fqdn_choice: "{{hostvars[item].ansible_host}}"

@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-  - bigip-enable-pool-member
+  - rsoliman.f5_demos.bigip_enable_pool_member

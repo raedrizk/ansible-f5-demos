@@ -5,7 +5,7 @@
   tasks:
    - name: Loop over hosts to add them as nodes
     include_role:
-      name: rsoliman.f5_demos.bigip-add-node
+      name: rsoliman.f5_demos.bigip_add_node
     vars:
       node_name_choice: "{{hostvars[item].inventory_hostname}}"
       node_fqdn_choice: "{{hostvars[item].ansible_host}}"

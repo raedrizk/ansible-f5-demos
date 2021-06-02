@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-  - rsoliman.f5_demos.bigip-add-node
+  - rsoliman.f5_demos.bigip_add_node

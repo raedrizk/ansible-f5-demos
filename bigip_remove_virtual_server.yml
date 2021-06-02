@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-  - rsoliman.f5_demos.bigip-remove-virtual-server
+  - rsoliman.f5_demos.bigip_remove_virtual_server
