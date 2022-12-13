@@ -1,6 +1,6 @@
 ---
 - name: Remove all ansible inventory nodes from F5 Big IP and Save the running config to disk
-  hosts: all
+  hosts: "{{ ec2_name_tag_choice if (ec2_name_tag_choice is defined and ec2_name_tag_choice != '') else 'all' | default('all') }}"
   gather_facts: false
   tasks:
   - name: Loop over hosts to remove them from nodes
