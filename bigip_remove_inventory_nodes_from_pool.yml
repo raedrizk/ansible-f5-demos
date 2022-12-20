@@ -9,5 +9,6 @@
     vars:
       node_name_choice: "{{hostvars[item].inventory_hostname}}"
       node_fqdn_choice: "{{hostvars[item].ansible_host}}"
-    loop: "{{ groups['all'] }}"
+    #loop: "{{ groups['all'] }}"
+    loop: "{{ ansible_play_hosts_all }}"
     run_once: true
