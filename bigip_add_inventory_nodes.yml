@@ -1,6 +1,6 @@
 ---
 - name: Add all ansible inventory nodes to an F5 Big IP and Save the running config to disk
-  hosts: "{{ '*' + name_tag_choice if (name_tag_choice is defined and name_tag_choice != '') else 'all' | default('all') }}"
+  hosts: "{{ (aws_region_choice | regex_replace('-', '_')) if (aws_region_choice is defined and aws_region_choice != '') else 'all' | default('all') }}"
   gather_facts: false
   tasks:
   - name: Loop over hosts to add them as nodes
