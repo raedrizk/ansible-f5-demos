@@ -1,0 +1,47 @@
+- name: Remove all members from a pool
+  hosts: localhost
+  gather_facts: false
+  vars:
+    bigip_provider:
+        server: "{{ bigip_provider_server | default('bigip.demo.ansible') }}"
+        validate_certs: "{{ bigip_provider_validate_certs | default('no') }}"
+        user: "{{ bigip_provider_user | default('admin') }}"
+        password: "{{ bigip_provider_password | default('') }}"
+        server_port: "{{ bigip_provider_server_port | default(443) }}"
+    pool_name: "{{ pool_name_choice | default('foxhound') }}"
+
+  handlers:
+  - name: Save the running configuration of BIG-IP to disk
+    f5networks.f5_modules.bigip_config:
+      save: yes
+      provider: "{{ bigip_provider }}"
+    delegate_to: localhost
+    register: save_running_config_out
+    
+  tasks:
+    - name: Collect pool facts
+      f5networks.f5_modules.bigip_device_info:
+        gather_subset:
+          - ltm-pools
+        provider: "{{ bigip_provider }}"
+      delegate_to: localhost
+      register: pool_facts
+
+    - name: Check if the pool exists
+      when: item['name'] == pool_name
+      set_fact:
+        pool: "{{ item }}"
+      loop: "{{ pool_facts['ltm_pools'] }}"
+
+    - name: remove all nodes from the pool
+      f5networks.f5_modules.bigip_pool_member:
+        state: absent
+        pool: "{{ pool_name }}"
+        name: "{{ item['name'] | split(':') | first }}"
+        port: "{{ item['name'] | split(':') | last }}"
+        address: "{{ item['address'] }}"
+        partition: "{{ item['partition'] }}" 
+        provider: "{{ bigip_provider }}"
+      loop: "{{ pool['members'] }}"
+      when: pool['members'] is defined
+      notify: Save the running configuration of BIG-IP to disk
