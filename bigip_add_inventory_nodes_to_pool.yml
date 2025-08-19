@@ -1,6 +1,6 @@
 ---
 - name: Add inventory nodes to an existing F5 Big IP Pool as a member and Save the running config to disk
-  hosts: "{{ ec2_name_tag_choice if (ec2_name_tag_choice is defined and ec2_name_tag_choice != '') else 'all' | default('all') }}"
+  hosts: "{{ '*' + name_tag_choice if (name_tag_choice is defined and name_tag_choice != '') else 'all' | default('all') }}"
   gather_facts: false
   tasks:
   - name: Loop over hosts to add them as nodes
@@ -12,3 +12,18 @@
     #loop: "{{ groups['all'] }}"
     loop: "{{ ansible_play_hosts_all }}"
     run_once: true
+
+
+  # hosts: "{{ (aws_region_choice | regex_replace('-', '_')) if (aws_region_choice is defined and aws_region_choice != '') else 'all' | default('all') }}"
+  # gather_facts: false
+  # tasks:
+  # - name: print reghion
+  #   debug:
+  #     var: (aws_region_choice | regex_replace('-', '_'))
+  #   run_once: true
+
+  # - name: print host vars
+  #   debug:
+  #     msg: "Host: {{ item }} - IP: {{ hostvars[item].ansible_host }}"
+  #   loop: "{{ ansible_play_hosts_all }}"
+  #   run_once: true
